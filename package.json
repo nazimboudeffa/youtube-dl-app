@@ -1,0 +1,25 @@
+{
+  "name": "youtube-dl-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "youtube-dl": "^1.12.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nazimboudeffa/youtube-dl-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nazimboudeffa/youtube-dl-app/issues"
+  },
+  "homepage": "https://github.com/nazimboudeffa/youtube-dl-app#readme",
+  "description": ""
+}
