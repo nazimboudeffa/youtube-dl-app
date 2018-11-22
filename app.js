@@ -1,19 +1,19 @@
 var express = require('express');
-var ejs = require('ejs');
 var app = express();
 var server = require('http').Server(app);
-var path = require('path');
 var fs = require('fs');
 var ytdl = require('youtube-dl');
 
-//app.use('/css',express.static(__dirname + '/css'));
-//app.use('/js',express.static(__dirname + '/js'));
-//app.use('/assets',express.static(__dirname + '/assets'));
 app.set('view engine', 'ejs');
 
 console.log(__dirname);
-app.use(express.static('views/libs'));
-app.use(express.static('views/downloads'));
+app.use('/downloads', express.static('views/downloads', {
+    setHeaders: function (res, path, stat) {
+        // force browser to download, not to display
+        res.set('Content-Disposition', 'attachment');
+        res.set('Content-type', 'application/octet-stream');
+    }
+}));
 app.use(express.static('views/images'));
 
 app.get('/',function(req,res){
@@ -53,10 +53,9 @@ app.get('/:link', function(req, res) {
 
   video.on('end', function end() {
       'use strict';
-      console.log('\nDone');
+      console.log('\nDone ' + file);
       res.render('index', {file:file});
   });
-
 });
 
 server.listen(process.env.PORT || 3000,function(){
